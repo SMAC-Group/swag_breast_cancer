@@ -1,15 +1,15 @@
 Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression
 ====================================================================================================
 
-Replication of the findings of the research article
----------------------------------------------------
+Principal aim
+-------------
 
-In this repository we provide the codes necessary to replicate the findings presented in the research article **Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression** authored by Cesare Miglioli, Gaetan Bakalli, Stephane Guerrier, Samuel Orso, Roberto Molinari, Mucyo Karemera and Nabil Mili. This article is currently under review on *PLOS ONE*.
+In this repository we provide the codes necessary to replicate the findings presented in the research article **Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression** authored by Cesare Miglioli, Gaetan Bakalli, Stephane Guerrier, Samuel Orso, Roberto Molinari, Mucyo Karemera and Nabil Mili. This research article is currently under review on *PLOS ONE*.
 
 The statistical analysis performed in this study is based on the data presented in the paper **Subtype-specific micro-RNA expression signatures in breast cancer progression** by *Haakensen et al* in 2016. We thank the authors for having made available the [AHUS data set](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-3759/?query=AHUS) on the free access ArrayExpress platform.
 
-Get the data from ArrayExpres in R
-----------------------------------
+Get the data from ArrayExpress in R
+-----------------------------------
 
 First install the **ArrayExpress** package, through bioconductor, with the following code:
 
@@ -53,7 +53,7 @@ str(ae_obj) #to explore the new object
 mtab3759raw <- ae2bioc(mageFiles = ae_obj)
 ```
 
-The response *y* (i.e. if the subject has breast cancer or not) can be obtained directly from the *mtab3759raw* object together with the type of breast cancer *y*<sub>*s**u**b*</sub> (i.e. either benign, DCIS or invasive) which indicates the sub-populations. However, in order to get the final design matrix *X* of miRNAs used in the study, we need to apply the function *normalizeBetweenArrays()* of the *limma* package to our previously found object. This function normalizes expression intensities so that the same intensities (or log-ratios) have similar distributions across a set of arrays.
+The response *y* (i.e. if the subject has breast cancer or not) can be obtained directly from the *mtab3759raw* object together with the type of breast cancer *y*<sub>*s**u**b*</sub> (i.e. either benign, DCIS or invasive) which indicates the sub-populations. However, in order to get the final design matrix *X* of miRNAs used in the study, we need to apply the function *normalizeBetweenArrays()* of the **limma** package to our previously found object. This function normalizes expression intensities so that the same intensities (or log-ratios) have similar distributions across a set of arrays.
 
 ``` r
 # Response variable
