@@ -1,6 +1,3 @@
-# breast-cancer
+# `swag_breast_cancer` Replication of the study's findings
 
-This is the repository for the breast cancer project. 
-
-Samuel Orso, Gaetan Bakalli and Cesare Miglioli are the contributors of this project.
-
+We provide the codes necessary to replicate the findings in "Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression".
