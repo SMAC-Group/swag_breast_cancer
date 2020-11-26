@@ -4,7 +4,7 @@ Chameleon microRNAs in breast cancer: their elusive role as regulatory factors i
 Principal aim
 -------------
 
-In this repository we provide the codes necessary to replicate the findings presented in the research article **Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression** authored by Cesare Miglioli, Gaetan Bakalli, Stephane Guerrier, Samuel Orso, Roberto Molinari, Mucyo Karemera and Nabil Mili. This research article is currently under review on *PLOS ONE*.
+In this repository we provide the codes necessary to replicate the findings presented in the research article **Chameleon microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression** authored by Cesare Miglioli, Gaetan Bakalli, Samuel Orso, Mucyo Karemera, Roberto Molinari, Stephane Guerrier and Nabil Mili. This research article is currently under review for *PLOS ONE*.
 
 The statistical analysis performed in this study is based on the data presented in the paper **Subtype-specific micro-RNA expression signatures in breast cancer progression** by *Haakensen et al* in 2016. We thank the authors for having made available the [AHUS data set](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-3759/?query=AHUS) on the free access ArrayExpress platform.
 
