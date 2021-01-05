@@ -54,7 +54,6 @@ temp_dir <- "C:/..." #choose your preferred path
 dir.create(temp_dir)
 setwd(temp_dir)
 
-
 # Download the raw files
 # To run only the first time!
 
@@ -65,7 +64,6 @@ str(ae_obj) #to explore the new object
 ### Extraction ###
 
 mtab3759raw <- ae2bioc(mageFiles = ae_obj)
-
 
 ```
 
@@ -89,9 +87,11 @@ X <- mtab3759raw@.Data[[1]]
 
 X <-  t(X) #to have subjects on the rows and miRNAs on the columns
 
+colnames(X) <- mtab3759raw$genes$GeneName #Assign gene names to each column
+
 ```
 
 ## Reproduce the results
 
-Having now the final design matrix $X$ and the response $y$, we are able to reproduce the results and the graphs contained in the research article. Please refer to the file `breast_cancer_data_analysis.R` in this repository for a detailed explanation.   
+Having now the final design matrix $X$ and the response $y$, we are able to reproduce the results and the graphs contained in the research article. Please refer to the file `breast_cancer_data_analysis.R` in this repository for a detailed explanation.    
 

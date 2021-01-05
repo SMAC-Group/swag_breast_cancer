@@ -7,7 +7,7 @@
 # Please refer to the readme script for the detailed passages to obtain the below object:
 
 
-load("***.Rdata")
+load("data_breast_cancer.Rdata") #specify the preferred directory
 
 
 # First 31 observations in y_sub are either benign (23) or DCIS (8) and will not be considered
@@ -22,17 +22,19 @@ complete_X <- X
 
 X <- X[32:156,]
 
-### NO DUPLICATES ###
+### AVOID DUPLICATES ###
 
 # We need to use only the mean for the same name of gene to avoid duplicates.
 
-gene <- names(table(nomen))
+gene <- names(table(colnames(X)))
+
+all_genes <- colnames(X)
 
 X_new <- matrix(rep(0,125*961),nrow = 125,ncol = 961)
 
 for (i in 1:length(gene)) {
   
-  equal <- which(nomen == gene[i])
+  equal <- which(all_genes == gene[i])
   
   X_new[,i] <- rowMeans(X[,equal])
   
@@ -40,9 +42,9 @@ for (i in 1:length(gene)) {
 
 colnames(X_new) <- gene
 
-# Now we take off what are not genes (all genes have 16 repetitions)
+# Now we take off other measures which are not genes (i.e. all genes have 16 repetitions)
 
-no_gene <- names(which(table(nomen) != "16"))
+no_gene <- names(which(table(all_genes) != "16"))
 
 number <- unlist(sapply(no_gene, function(x) which(gene == x)))
 
@@ -64,7 +66,7 @@ X_new <- X_new[,-number]
 
 set.seed(180)
 
-chos <- sample(index,25)  
+chos <- sample(1:125,25)  
 
 y_test <- y[chos]
 
@@ -76,14 +78,25 @@ x_train <- X_new[-chos,]
 
 ### Data Analysis ###
 
+# Please install the packages detailed in dep_panning2 
+
+# if not already in your library.
+
+# In particular, you need to install:
+
+devtools::install_github("https://github.com/samorso/panning2/")
+
+# The package panning2 is used for logistic regression and 10 fold CV repeated 10 times evaluation.
+
 # Requiring packages
 
 dep_panning2 = c("devtools","doParallel","rngtools","doRNG","nnet","MASS","R.utils","Rcpp","RcppEigen","RcppNumerical", "panning2") 
 
 lapply(dep_panning2, require, character.only = TRUE)
 
+### NOTE WELL: Now you can run all the code below up to line 205 ###
 
-### 1st Algorithm ###
+## 1st Algorithm ##
 
 # parameters
 q0 <- .05 # quantile for the whole procedure
@@ -124,13 +137,15 @@ stopCluster(cl)
 CVs[[1]] <- cv_errors
 VarMat[[1]] <- seq_along(cv_errors)
 
-q1 <- 0.05 #quantile for first screening (see Algo1). I can be different from q0, as it selects the size of the bowl.
+q1 <- 0.05 #quantile for first screening (see Algo1). In this case is the same.
+
+# It can be different from q0, as it selects the size of the bowl. 
 
 IDs[[1]] <- which(cv_errors <= quantile(cv_errors,q1))
 
 id_screening <- IDs[[1]]
 
-### General Procedure ###
+## General Procedure ##
 
 # Dimension d >= 2
 for(d in 2L:dmax){
@@ -192,6 +207,8 @@ for(d in 2L:dmax){
   save(VarMat,file="VarMat_ahus.rda")
   print(d)
 }
+
+### Reproduction of Graphs and Tables ###
 
 # Graph of CV errors
 
