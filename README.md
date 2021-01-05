@@ -56,7 +56,6 @@ temp_dir <- "C:/..." #choose your preferred path
 dir.create(temp_dir)
 setwd(temp_dir)
 
-
 # Download the raw files
 # To run only the first time!
 
@@ -93,6 +92,8 @@ mtab3759raw <- normalizeBetweenArrays(mtab3759raw,method="quantile")
 X <- mtab3759raw@.Data[[1]]
 
 X <-  t(X) #to have subjects on the rows and miRNAs on the columns
+
+colnames(X) <- mtab3759raw$genes$GeneName #Assign gene names to each column
 ```
 
 Reproduce the results
