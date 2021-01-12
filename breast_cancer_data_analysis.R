@@ -24,7 +24,7 @@ X <- X[32:156,]
 
 ### AVOID DUPLICATES ###
 
-# We need to use only the mean for the same name of gene to avoid duplicates.
+# We need to use only the mean for the same name of each gene to avoid duplicates.
 
 gene <- names(table(colnames(X)))
 
@@ -94,7 +94,9 @@ dep_panning2 = c("devtools","doParallel","rngtools","doRNG","nnet","MASS","R.uti
 
 lapply(dep_panning2, require, character.only = TRUE)
 
-### NOTE WELL: Now you can run all the code below up to line 205 ###
+########################################################################
+##### NOTE WELL: Now you can run all the code below up to line 211 #####
+########################################################################
 
 ## 1st Algorithm ##
 
@@ -223,6 +225,7 @@ u_vector <- sapply(CVs, function(x) summary(x)[6])
 plot(1:length(CVs),m_vector,main = "Average CV Errors Hamming",ylab = "Average cv-error",xlab = "Model Dimension")
 
 
+# Post-processing
 
 # Range graph of SWAG solutions
 
@@ -326,7 +329,7 @@ conf_mat_part <- caret::confusionMatrix(data = lasso_resp,reference = y_test,pos
 
 test_pred <- output$fit_prob[,which(swag_auc == "1")] #54,89 best AUC
 
-# 16/11 Finding the range for spec-sens at 0.5 cut-off
+# Finding the range for spec-sens at 0.5 cut-off
 
 sens <- sapply(swag_roc_all_models, function(x) x[81,1]) 
 
