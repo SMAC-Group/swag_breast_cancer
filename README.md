@@ -1,10 +1,10 @@
-*Chameleon* microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression
-======================================================================================================
+Evidence of antagonistic predictive effects of miRNAs in breast cancer cohorts through data-driven networks
+===========================================================================================================
 
 Principal aim
 -------------
 
-In this repository we provide the codes necessary to replicate the findings presented in the research article ***Chameleon*** **microRNAs in breast cancer: their elusive role as regulatory factors in cancer progression** authored by Cesare Miglioli, Gaetan Bakalli, Samuel Orso, Mucyo Karemera, Roberto Molinari, Stephane Guerrier and Nabil Mili.
+In this repository we provide the codes necessary to replicate the findings presented in the research article **Evidence of antagonistic predictive effects of miRNAs in breast cancer cohorts through data-driven networks** authored by Cesare Miglioli, Gaetan Bakalli, Samuel Orso, Mucyo Karemera, Roberto Molinari, Stephane Guerrier and Nabil Mili.
 
 The statistical analysis performed in this study is based on the data presented in the paper **Subtype-specific micro-RNA expression signatures in breast cancer progression** by *Haakensen et al* in 2016. We thank the authors for having made available the [AHUS data set](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-3759/?query=AHUS) on the free access ArrayExpress platform.
 
